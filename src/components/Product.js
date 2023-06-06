@@ -1,11 +1,9 @@
 import {useContext, useEffect, useState} from "react";
 import {ShopContext} from "../contexts/context";
-import axios from "axios";
 
 async function getProducts() {
- //   const res = await axios.get(`http://localhost:9000/products`)
-  //  return res.data;
-    return await axios.get(`http://localhost:9000/products`).then(res=>res.data)
+    return await fetch(`http://localhost:9000/products`)
+        .then(response => response.json())
 }
 
 export const Product = () => {
@@ -35,5 +33,4 @@ export const Product = () => {
 
     )
 }
-
 

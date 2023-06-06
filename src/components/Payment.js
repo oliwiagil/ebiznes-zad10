@@ -1,7 +1,5 @@
 import {useContext} from "react";
 import {ShopContext} from "../contexts/context";
-import axios from "axios";
-
 
 export function Payment(props) {
     const {clearCart} = useContext(ShopContext);
@@ -12,6 +10,10 @@ export function Payment(props) {
 }
 
 function pay(value){
-    axios.post('http://localhost:9000/addpayment', { value: value })
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ value: value })
+    };
+    fetch('http://localhost:9000/addpayment', requestOptions)
 }
-
